@@ -1,5 +1,5 @@
-import { createYoga } from 'graphql-yoga'
-import { createSchema } from 'graphql-yoga'
+import { createYoga, createSchema } from 'graphql-yoga'
+import { NextRequest } from 'next/server'
 
 function generateMockData() {
   const now = new Date().toISOString()
@@ -11,7 +11,7 @@ function generateMockData() {
   }))
 }
 
-const typeDefs = `
+const typeDefs = /* GraphQL */ `
   type Ticker {
     amount: Int
     price: Float
@@ -36,9 +36,15 @@ const schema = createSchema({
 })
 
 const yoga = createYoga({
-  graphqlEndpoint: '/api/graphql',
   schema,
+  graphqlEndpoint: '/api/graphql',
   fetchAPI: { Request, Response },
 })
 
-export { yoga as GET, yoga as POST }
+export async function GET(request: NextRequest) {
+  return yoga.handleRequest(request, {})
+}
+
+export async function POST(request: NextRequest) {
+  return yoga.handleRequest(request, {})
+}

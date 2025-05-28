@@ -16,8 +16,6 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Loader2 } from "lucide-react"
 
-
-
 const TICKER_QUERY = gql`
   query GetTickers {
     tickers {
@@ -39,7 +37,6 @@ type TickerData = {
 export default function Ticker() {
   const [data, setData] = useState<TickerData[]>([])
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
 
 
   const fetchData = useCallback(async () => {
@@ -48,7 +45,7 @@ export default function Ticker() {
       const endpoint = `${window.location.origin}/api/graphql`
       const client = new GraphQLClient(endpoint)
 
-      await new Promise((resolve) => setTimeout(resolve, 1000)) // simulate latency
+      await new Promise((resolve) => setTimeout(resolve, 1000))
       const res = await client.request<{ tickers: TickerData[] }>(TICKER_QUERY)
       setData(res.tickers)
     } catch (error) {
@@ -62,7 +59,7 @@ export default function Ticker() {
     fetchData()
     const interval = setInterval(fetchData, 20_000)
     return () => clearInterval(interval)
-  }, [])
+  }, [fetchData])
 
   const renderedRows = useMemo(() => {
     return data.map((token, index) => (
@@ -133,7 +130,6 @@ export default function Ticker() {
       ) : (
         <p className="text-red-500 mt-4">No data available.</p>
       )}
-      {error && <p className="text-red-600 my-4">{error}</p>}
     </div>
   )
 }
