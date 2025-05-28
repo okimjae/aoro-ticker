@@ -1,28 +1,48 @@
-# Token Ticker Component
+# 💠 Token Ticker Component
 
-A React client-side component to fetch and display token ticker data using GraphQL.
+A client-side React component that fetches and displays token ticker data using GraphQL.
 
-## Overview
+## 📖 Overview
 
-This component fetches a list of tokens with their amount, price, and holders count from a GraphQL API endpoint and displays them in a styled table. It includes:
-
-- Data fetching with GraphQL using `graphql-request`
-- Loading skeleton placeholders while data is fetched
-- Auto-refresh every 20 seconds
-- Manual refresh button with loading state
-- Dark mode support with custom CSS variables
-- Memoized rendering for performance optimization
+This component retrieves a list of tokens (amount, price, and holder count) from a GraphQL API and renders the data in a responsive and theme-aware table UI. It's built with performance, user experience, and code readability in mind.
 
 ---
 
-## Features
+## ✨ Features
 
-- **GraphQL Data Fetching**: Uses `graphql-request` to query token data.
-- **Auto Refresh**: Data refreshes automatically every 20 seconds.
-- **Manual Refresh**: Update button to fetch latest data on demand.
-- **Loading UI**: Displays skeleton rows while fetching data.
-- **Memoization**: Uses `useCallback` and `useMemo` to optimize renders.
-- **Responsive & Accessible**: Table layout adapts and uses semantic HTML.
-- **Dark Mode**: Supports light and dark themes.
+- ⚡ **GraphQL Integration**  
+  Fetches data using [`graphql-request`](https://github.com/jasonkuhrt/graphql-request).
+
+- 🔁 **Auto Refresh**  
+  Automatically updates data every 20 seconds.
+
+- 🔄 **Manual Refresh**  
+  Includes a refresh button with loading feedback via spinner animation.
+
+- 💡 **Skeleton UI**  
+  Shows loading placeholders while fetching data.
+
+- 🚀 **Memoized Rendering**  
+  Optimized using `useCallback` and `useMemo` to avoid unnecessary re-renders.
+
+- 🌗 **Dark Mode Support**  
+  Fully styled for light and dark themes using CSS variables and Tailwind.
+
+- 📱 **Responsive & Accessible**  
+  Built with semantic HTML and accessible components.
 
 ---
+
+## 🔗 Live Demo
+
+👉 [View the deployed version](https://aoro-ticker-pmoq6uhfx-okimjaes-projects.vercel.app/)
+
+---
+
+## 🛠 Tech Stack
+
+- **React** with Server Components  
+- **GraphQL Yoga** (API layer)  
+- **Tailwind CSS** for UI styling  
+- **ShadCN/UI** for reusable components  
+- **Next.js (App Router)**
